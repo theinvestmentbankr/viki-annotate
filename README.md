@@ -36,6 +36,17 @@ App size: ~13 MB (vs ~150 MB for an equivalent Electron app).
 
 Pre-built macOS app bundles are available on the [Releases](../../releases) page.
 
+### Installing on macOS
+
+The build is ad-hoc signed but **not notarized by Apple** (notarization requires a paid Apple Developer ID, which this project does not yet have). After downloading, macOS may show one of two warnings the first time you open the app:
+
+- *"Viki Annotate cannot be opened because the developer cannot be verified"* — **right-click the app and choose Open**, then click *Open* in the dialog. macOS will remember this choice.
+- *"Viki Annotate is damaged and can't be opened"* — this happens when macOS strips the bundle's signature on download. Run the following in Terminal once after moving the app to `/Applications`:
+  ```bash
+  xattr -cr "/Applications/Viki Annotate.app"
+  ```
+  Then double-click the app normally.
+
 ## Build From Source
 
 Requires [Node.js](https://nodejs.org/) 20+ and [Rust](https://www.rust-lang.org/tools/install).
@@ -71,4 +82,4 @@ viki-annotate/
 
 ## License
 
-MIT
+[Apache License 2.0](LICENSE)
